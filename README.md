@@ -1,9 +1,10 @@
 A Management System for a Coffee Shop in C# (clean, well-maintainable code)
-FEATURES:
--a robust and efficient C# application using a SQL database.
--Implemented functionalities for adding, editing, and deleting data about each aspect of the program.
--Incorporated search, sort, and filter functionalities.
--Designed and developed in an intuitive user interface for ease of use.
+    
+**FEATURES**:
+--a robust and efficient C# application using a SQL database.
+--Implemented functionalities for adding, editing, and deleting data about each aspect of the program.
+--Incorporated search, sort, and filter functionalities.
+--Designed and developed in an intuitive user interface for ease of use.
 
 **Customer**
 **Customer Entity** Entity: Represents the structure of your Customer data.
