@@ -9,7 +9,7 @@ A Management System for a Coffee Shop in C# using WinForms (clean, well-maintain
 
 **Customer**
 
-**Customer Entity** Entity: Represents the structure of your Customer data.
+**Customer Entity** Entity: Represents the structure of your Customer data. 
 **DbContext**: Updated to include a DbSet<Customer>.
 **Customer Form**: Designed with a UI to input and display customer data.
 **Code Behind**: Logic for adding and loading customers using Entity Framework.
