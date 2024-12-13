@@ -31,8 +31,7 @@ namespace CoffeeShopManagement
             {
                 var customer = new Customer
                 {
-                    FirstName = firstName,
-                    LastName = lastName,
+                    Name = firstName,
                     Email = email,
                     Phone = phone
                 };

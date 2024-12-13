@@ -29,7 +29,7 @@ namespace CoffeeShopManagement
             {
                 var customers = context.Customers.ToList();
                 comboBoxCustomers.DataSource = customers;
-                comboBoxCustomers.DisplayMember = "FullName"; // Assume you have a FullName property  
+                comboBoxCustomers.DisplayMember = "Name"; // Assume you have a FullName property  
                 comboBoxCustomers.ValueMember = "CustomerId";
             }
         }
@@ -98,7 +98,7 @@ namespace CoffeeShopManagement
                     .Select(o => new
                     {
                         o.OrderID,
-                        CustomerName = o.Customer.FirstName + " " + o.Customer.LastName,
+                        CustomerName = o.Customer.Name,
                         o.OrderDate,
                         o.TotalAmount
                     }).ToList();
