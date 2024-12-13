@@ -13,38 +13,63 @@ namespace CoffeeShopManagement
 {
     public partial class CustomerForm : Form
     {
+        public Customer LastAddedCistomer;
         public CustomerForm()
         {
             InitializeComponent();
+            LoadCustomers();
+            LastAddedCistomer = new Customer();
             btnAdd.Click += BtnAdd_Click;
             btnLoad.Click += BtnLoad_Click;
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            string firstName = txtFirstName.Text;
-            string lastName = txtLastName.Text;
-            string email = txtEmail.Text;
-            string phone = txtPhone.Text;
-
-            using (var context = new CoffeeShopContext())
+            if (string.IsNullOrWhiteSpace(txtFirstName.Text) || string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPhone.Text))
             {
-                var customer = new Customer
+                MessageBox.Show("Please enter the customer details."); // Show message if input is invalid  
+                return; // Exit the method  
+            }
+            else
+            {
+                string firstName = txtFirstName.Text;
+                string email = txtEmail.Text;
+                string phone = txtPhone.Text;
+
+                using (var context = new CoffeeShopContext())
+                {
+                    var customer = new Customer
+                    {
+                        Name = firstName,
+                        Email = email,
+                        Phone = phone
+                    };
+
+                    context.Customers.Add(customer);
+                    context.SaveChanges();
+                }
+                LastAddedCistomer = new Customer
                 {
                     Name = firstName,
                     Email = email,
                     Phone = phone
                 };
-
-                context.Customers.Add(customer);
-                context.SaveChanges();
+                MessageBox.Show("Customer added successfully!");
+                ClearFields();
+                LoadCustomers();
             }
 
-            MessageBox.Show("Customer added successfully!");
-            ClearFields();
         }
 
         private void BtnLoad_Click(object sender, EventArgs e)
+        {
+            using (var context = new CoffeeShopContext())
+            {
+                var customers = context.Customers.ToList();
+                dataGridViewCustomers.DataSource = customers;
+            }
+        }
+        private void LoadCustomers()
         {
             using (var context = new CoffeeShopContext())
             {
@@ -56,9 +81,20 @@ namespace CoffeeShopManagement
         private void ClearFields()
         {
             txtFirstName.Clear();
-            txtLastName.Clear();
             txtEmail.Clear();
             txtPhone.Clear();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void back_button1_Click(object sender, EventArgs e)
+        {
+            var orderForm = new OrderForm(LastAddedCistomer);
+            orderForm.Show(); 
+            this.Hide(); // Hide the current Order Form  
         }
     }
 }

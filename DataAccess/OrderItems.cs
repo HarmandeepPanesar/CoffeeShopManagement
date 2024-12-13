@@ -12,7 +12,6 @@ namespace CoffeeShopManagement.DataAccess
         public int OrderID { get; set; } // Foreign Key  
         public int ProductID { get; set; } // Foreign Key  
         public int Quantity { get; set; }
-        public decimal TotalAmount { get; set; }
 
         // Navigation Properties  
         public virtual Orders Order { get; set; }

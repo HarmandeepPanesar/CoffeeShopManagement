@@ -13,10 +13,7 @@ namespace CoffeeShopManagement
 
             // Uncomment the form you want to start with  
             // Application.Run(new OrderForm());
-            Application.Run(new OrderForm()); // Start with OrderItemForm
-            Application.Run(new OrderItemsForm()); // Start with OrderItemForm  
-Application.Run(new CustomerForm()); // Start with OrderItemForm
-            Application.Run(new ProductForm()); // Start with OrderItemForm  
+            Application.Run(new OrderForm()); // Start with the Order Form  
 
         }
 

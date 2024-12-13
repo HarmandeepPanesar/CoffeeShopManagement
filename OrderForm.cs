@@ -13,16 +13,47 @@ namespace CoffeeShopManagement
 {
     public partial class OrderForm : Form
     {
+        public OrderForm(Customer customer)
+        {
+            InitializeComponent();
+            LoadLastAddedCustomer(customer);
+            LoadProducts();
+            btnNext.Click += BtnNext_Click; // Attach event handler to the Next button  
+            btnAddOrder.Click += BtnAddOrder_Click;
+            btnLoadOrders.Click += BtnLoadOrders_Click;
+        }
         public OrderForm()
         {
             InitializeComponent();
             LoadCustomers();
             LoadProducts();
-
+            btnNext.Click += BtnNext_Click; // Attach event handler to the Next button  
             btnAddOrder.Click += BtnAddOrder_Click;
             btnLoadOrders.Click += BtnLoadOrders_Click;
         }
 
+        private void BtnNext_Click(object sender, EventArgs e) // Event handler for Next button click  
+        {
+            // Validate input (you can expand this validation as needed)
+            if (string.IsNullOrWhiteSpace(comboBoxProducts.Text))
+            {
+                MessageBox.Show("Please enter an order type."); // Show message if input is invalid  
+                return; // Exit the method  
+            }
+
+            // Create a new Order object with user input  
+            var orderDetails = new Orders
+            {
+                // Here you can add other properties as needed, for example:
+                // OrderType = txtOrderType.Text;
+                OrderItems = new List<OrderItems>() // Initialize the OrderItems list  
+            };
+
+            // Create the Customer Details Form and pass the order details  
+            //var customerForm = new CustomerForm(orderDetails);
+            //customerForm.Show(); // Show the Customer Details Form  
+            //this.Hide(); // Hide the current Order Form  
+        }
         private void LoadCustomers()
         {
             using (var context = new CoffeeShopContext())
@@ -30,7 +61,17 @@ namespace CoffeeShopManagement
                 var customers = context.Customers.ToList();
                 comboBoxCustomers.DataSource = customers;
                 comboBoxCustomers.DisplayMember = "Name"; // Assume you have a FullName property  
-                comboBoxCustomers.ValueMember = "CustomerId";
+                comboBoxCustomers.ValueMember = "CustomerID";
+            }
+        }
+        private void LoadLastAddedCustomer(Customer customer)
+        {
+            using (var context = new CoffeeShopContext())
+            {
+                var customers = context.Customers.Where(m => m.Email == customer.Email).ToList();
+                comboBoxCustomers.DataSource = customers;
+                comboBoxCustomers.DisplayMember = "Name"; // Assume you have a FullName property  
+                comboBoxCustomers.ValueMember = "CustomerID";
             }
         }
 
@@ -62,6 +103,8 @@ namespace CoffeeShopManagement
 
                     context.Orders.Add(order);
                     context.SaveChanges();
+                    // Update total amount  
+
 
                     // Now add the order item  
                     var product = context.Products.Find(productId);
@@ -70,16 +113,13 @@ namespace CoffeeShopManagement
                         OrderID = order.OrderID,
                         ProductID = productId,
                         Quantity = quantity,
-                        TotalAmount = product.Price // Assuming price is stored in product  
                     };
 
                     context.OrderItems.Add(orderItem);
                     context.SaveChanges();
 
-                    // Update total amount  
-                    order.TotalAmount += orderItem.TotalAmount * quantity;
+                    order.TotalAmount += product.Price * quantity;
                     context.SaveChanges();
-
                     MessageBox.Show("Order added successfully!");
                     ClearFields();
                 }
@@ -100,7 +140,9 @@ namespace CoffeeShopManagement
                         o.OrderID,
                         CustomerName = o.Customer.Name,
                         o.OrderDate,
-                        o.TotalAmount
+                        o.TotalAmount,
+                        OrderedItems = string.Join(", ", o.OrderItems.Select(oi => $"{oi.Product.Name} (Qty: {oi.Quantity})")) 
+
                     }).ToList();
 
                 dataGridViewOrders.DataSource = orders;
@@ -112,6 +154,27 @@ namespace CoffeeShopManagement
             comboBoxCustomers.SelectedIndex = -1;
             comboBoxProducts.SelectedIndex = -1;
             txtQuantity.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var customerForm = new CustomerForm();
+            customerForm.Show(); // Show the Customer Details Form  
+            this.Hide(); // Hide the current Order Form  
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var customerForm = new OrderItemsForm();
+            customerForm.Show(); // Show the Customer Details Form  
+            //this.Hide(); // Hide the current Order Form  
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var customerForm = new ProductForm();
+            customerForm.Show(); // Show the Customer Details Form  
+            //this.Hide(); // Hide the current Order Form  
         }
     }
 }

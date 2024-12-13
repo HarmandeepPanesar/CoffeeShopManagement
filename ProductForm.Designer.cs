@@ -16,96 +16,133 @@
 
         private void InitializeComponent()
         {
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtPrice = new System.Windows.Forms.TextBox();
-            this.txtCategory = new System.Windows.Forms.TextBox();
-            this.txtStock = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnLoad = new System.Windows.Forms.Button();
-            this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
-
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
-            this.SuspendLayout();
-
+            txtName = new TextBox();
+            txtPrice = new TextBox();
+            txtCategory = new TextBox();
+            txtStock = new TextBox();
+            btnAdd = new Button();
+            btnLoad = new Button();
+            dataGridViewProducts = new DataGridView();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
+            SuspendLayout();
             // 
-            // txtName  
+            // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(15, 25);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(200, 22);
-            this.txtName.TabIndex = 0;
-
+            txtName.Location = new Point(15, 40);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(200, 31);
+            txtName.TabIndex = 0;
             // 
-            // txtPrice  
+            // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(15, 60);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(200, 22);
-            this.txtPrice.TabIndex = 1;
-
+            txtPrice.Location = new Point(15, 103);
+            txtPrice.Name = "txtPrice";
+            txtPrice.Size = new Size(200, 31);
+            txtPrice.TabIndex = 1;
             // 
-            // txtCategory  
+            // txtCategory
             // 
-            this.txtCategory.Location = new System.Drawing.Point(15, 95);
-            this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(200, 22);
-            this.txtCategory.TabIndex = 2;
-
+            txtCategory.Location = new Point(15, 178);
+            txtCategory.Name = "txtCategory";
+            txtCategory.Size = new Size(200, 31);
+            txtCategory.TabIndex = 2;
             // 
-            // txtStock  
+            // txtStock
             // 
-            this.txtStock.Location = new System.Drawing.Point(15, 130);
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(200, 22);
-            this.txtStock.TabIndex = 3;
-
+            txtStock.Location = new Point(15, 252);
+            txtStock.Name = "txtStock";
+            txtStock.Size = new Size(200, 31);
+            txtStock.TabIndex = 3;
             // 
-            // btnAdd  
+            // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(15, 170);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 30);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Add Product";
-            this.btnAdd.UseVisualStyleBackColor = true;
-
+            btnAdd.Location = new Point(60, 311);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(99, 33);
+            btnAdd.TabIndex = 4;
+            btnAdd.Text = "Add Product";
+            btnAdd.UseVisualStyleBackColor = true;
             // 
-            // btnLoad  
+            // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(120, 170);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(100, 30);
-            this.btnLoad.TabIndex = 5;
-            this.btnLoad.Text = "Load Products";
-            this.btnLoad.UseVisualStyleBackColor = true;
-
+            btnLoad.Location = new Point(726, 7);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(208, 30);
+            btnLoad.TabIndex = 5;
+            btnLoad.Text = "Load Products";
+            btnLoad.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewProducts  
+            // dataGridViewProducts
             // 
-            this.dataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProducts.Location = new System.Drawing.Point(15, 210);
-            this.dataGridViewProducts.Name = "dataGridViewProducts";
-            this.dataGridViewProducts.RowHeadersWidth = 51;
-            this.dataGridViewProducts.Size = new System.Drawing.Size(400, 150);
-            this.dataGridViewProducts.TabIndex = 6;
-
+            dataGridViewProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProducts.Location = new Point(226, 40);
+            dataGridViewProducts.Name = "dataGridViewProducts";
+            dataGridViewProducts.RowHeadersWidth = 51;
+            dataGridViewProducts.Size = new Size(708, 335);
+            dataGridViewProducts.TabIndex = 6;
             // 
-            // ProductForm  
+            // label1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(450, 380);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.txtCategory);
-            this.Controls.Add(this.txtStock);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.dataGridViewProducts);
-            this.Text = "Product Management";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            label1.AutoSize = true;
+            label1.Location = new Point(15, 10);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 25);
+            label1.TabIndex = 7;
+            label1.Text = "Name";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(17, 79);
+            label2.Name = "label2";
+            label2.Size = new Size(49, 25);
+            label2.TabIndex = 8;
+            label2.Text = "Price";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(17, 150);
+            label3.Name = "label3";
+            label3.Size = new Size(84, 25);
+            label3.TabIndex = 9;
+            label3.Text = "Category";
+            label3.Click += label3_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(20, 228);
+            label4.Name = "label4";
+            label4.Size = new Size(55, 25);
+            label4.TabIndex = 10;
+            label4.Text = "Stock";
+            // 
+            // ProductForm
+            // 
+            ClientSize = new Size(946, 380);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(txtName);
+            Controls.Add(txtPrice);
+            Controls.Add(txtCategory);
+            Controls.Add(txtStock);
+            Controls.Add(btnAdd);
+            Controls.Add(btnLoad);
+            Controls.Add(dataGridViewProducts);
+            Name = "ProductForm";
+            Text = "Product Management";
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -118,5 +155,10 @@
             }
             base.Dispose(disposing);
         }
+
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }

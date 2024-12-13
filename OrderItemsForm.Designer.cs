@@ -6,95 +6,71 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.ComboBox comboBoxOrders;
+        //private System.Windows.Forms.ComboBox comboBoxOrders;
         private System.Windows.Forms.ComboBox comboBoxProducts;
-        private System.Windows.Forms.TextBox txtQuantity;
-        private System.Windows.Forms.Button btnAddOrderItem;
         private System.Windows.Forms.Button btnLoadOrderItems;
         private System.Windows.Forms.DataGridView dataGridViewOrderItems;
 
         private void InitializeComponent()
         {
-            this.comboBoxOrders = new System.Windows.Forms.ComboBox();
-            this.comboBoxProducts = new System.Windows.Forms.ComboBox();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.btnAddOrderItem = new System.Windows.Forms.Button();
-            this.btnLoadOrderItems = new System.Windows.Forms.Button();
-            this.dataGridViewOrderItems = new System.Windows.Forms.DataGridView();
-
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderItems)).BeginInit();
-            this.SuspendLayout();
-
+            comboBoxProducts = new ComboBox();
+            btnLoadOrderItems = new Button();
+            dataGridViewOrderItems = new DataGridView();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewOrderItems).BeginInit();
+            SuspendLayout();
             // 
-            // comboBoxOrders  
+            // comboBoxProducts
             // 
-            this.comboBoxOrders.Location = new System.Drawing.Point(15, 25);
-            this.comboBoxOrders.Name = "comboBoxOrders";
-            this.comboBoxOrders.Size = new System.Drawing.Size(200, 24);
-            this.comboBoxOrders.TabIndex = 0;
-
+            comboBoxProducts.Location = new Point(15, 58);
+            comboBoxProducts.Name = "comboBoxProducts";
+            comboBoxProducts.Size = new Size(200, 33);
+            comboBoxProducts.TabIndex = 1;
+            comboBoxProducts.SelectedIndexChanged += comboBoxProducts_SelectedIndexChanged;
             // 
-            // comboBoxProducts  
+            // btnLoadOrderItems
             // 
-            this.comboBoxProducts.Location = new System.Drawing.Point(15, 60);
-            this.comboBoxProducts.Name = "comboBoxProducts";
-            this.comboBoxProducts.Size = new System.Drawing.Size(200, 24);
-            this.comboBoxProducts.TabIndex = 1;
-
+            btnLoadOrderItems.Location = new Point(611, 22);
+            btnLoadOrderItems.Name = "btnLoadOrderItems";
+            btnLoadOrderItems.Size = new Size(100, 69);
+            btnLoadOrderItems.TabIndex = 4;
+            btnLoadOrderItems.Text = "Reload Items";
+            btnLoadOrderItems.UseVisualStyleBackColor = true;
+            btnLoadOrderItems.Click += btnLoadOrderItems_Click_1;
             // 
-            // txtQuantity  
+            // dataGridViewOrderItems
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(15, 95);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(200, 22);
-            this.txtQuantity.TabIndex = 2;
-
+            dataGridViewOrderItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewOrderItems.Location = new Point(15, 97);
+            dataGridViewOrderItems.Name = "dataGridViewOrderItems";
+            dataGridViewOrderItems.RowHeadersWidth = 51;
+            dataGridViewOrderItems.Size = new Size(706, 254);
+            dataGridViewOrderItems.TabIndex = 5;
             // 
-            // btnAddOrderItem  
+            // label1
             // 
-            this.btnAddOrderItem.Location = new System.Drawing.Point(15, 130);
-            this.btnAddOrderItem.Name = "btnAddOrderItem";
-            this.btnAddOrderItem.Size = new System.Drawing.Size(100, 30);
-            this.btnAddOrderItem.TabIndex = 3;
-            this.btnAddOrderItem.Text = "Add Item";
-            this.btnAddOrderItem.UseVisualStyleBackColor = true;
-
+            label1.AutoSize = true;
+            label1.Location = new Point(15, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(307, 25);
+            label1.TabIndex = 6;
+            label1.Text = "Check Order Item based on Category";
+            label1.Click += label1_Click;
             // 
-            // btnLoadOrderItems  
+            // OrderItemsForm
             // 
-            this.btnLoadOrderItems.Location = new System.Drawing.Point(120, 130);
-            this.btnLoadOrderItems.Name = "btnLoadOrderItems";
-            this.btnLoadOrderItems.Size = new System.Drawing.Size(100, 30);
-            this.btnLoadOrderItems.TabIndex = 4;
-            this.btnLoadOrderItems.Text = "Load Items";
-            this.btnLoadOrderItems.UseVisualStyleBackColor = true;
-
-            // 
-            // dataGridViewOrderItems  
-            // 
-            this.dataGridViewOrderItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrderItems.Location = new System.Drawing.Point(15, 170);
-            this.dataGridViewOrderItems.Name = "dataGridViewOrderItems";
-            this.dataGridViewOrderItems.RowHeadersWidth = 51;
-            this.dataGridViewOrderItems.Size = new System.Drawing.Size(400, 150);
-            this.dataGridViewOrderItems.TabIndex = 5;
-
-            // 
-            // OrderItemForm  
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(450, 350);
-            this.Controls.Add(this.comboBoxOrders);
-            this.Controls.Add(this.comboBoxProducts);
-            this.Controls.Add(this.txtQuantity);
-            this.Controls.Add(this.btnAddOrderItem);
-            this.Controls.Add(this.btnLoadOrderItems);
-            this.Controls.Add(this.dataGridViewOrderItems);
-            this.Text = "Order Item Management";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderItems)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            ClientSize = new Size(733, 363);
+            Controls.Add(label1);
+            Controls.Add(comboBoxProducts);
+            Controls.Add(btnLoadOrderItems);
+            Controls.Add(dataGridViewOrderItems);
+            Name = "OrderItemsForm";
+            Text = "Order Item Management";
+            ((System.ComponentModel.ISupportInitialize)dataGridViewOrderItems).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -107,5 +83,7 @@
             }
             base.Dispose(disposing);
         }
+
+        private Label label1;
     }
 }
