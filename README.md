@@ -53,7 +53,7 @@ A Management System for a Coffee Shop in C# using WinForms (clean, well-maintain
 
 **DbContext**: Already includes DbSet<OrderItem>.
 
-**OrderItem Form**: Designed with UI elements to input and display order item data.
+**OrderItem Form**: Designed with UI elements to display order item data.
 
-**Code Behind**: Logic for adding order items to orders and loading items for display.
+**Code Behind**: Logic for loading items for display.
 ![Screenshot 2024-12-13 145600](https://github.com/user-attachments/assets/8ceb1569-e6d0-44aa-82ad-e8d53b0be1b3)
